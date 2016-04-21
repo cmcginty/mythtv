@@ -62,7 +62,7 @@ class MythDBError( MythError ):
                    % (self.dbconn['DBUserName'], self.dbconn['DBPassword']),)
         elif args[0] == self.DB_CREDENTIALS:
             self.ename = 'DB_CREDENTIALS'
-            self.ecode = args
+            self.ecode, = args
             self.args = ("Could not find database login credentials",)
         elif args[0] == self.DB_SETTING:
             self.ename = 'DB_SETTING'
@@ -90,7 +90,7 @@ class MythDBError( MythError ):
             self.ecode, self.args = args
         MythError.__init__(self, *args)
 
-class MythBEError( MythError ): 
+class MythBEError( MythError ):
     """
     MythBEError('Generic Error Message')
     MythBEError(PROTO_CONNECTION, backend, port)
@@ -119,7 +119,7 @@ class MythBEError( MythError ):
                         (self.remote, self.local),)
         elif args[0] == self.PROTO_PROGRAMINFO:
             self.ename = 'PROTO_PROGRAMINFO'
-            self.ecode = args[0]
+            self.ecode, = args
             self.args = ("Received invalid field count for program info",)
         MythError.__init__(self, *args)
 
